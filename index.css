@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: monospace;
+  }
+  
+
+.navbar {
+    overflow: hidden;
+    background-color: rgb(230, 11, 11);
+    background-blend-mode: multiply;
+    position: fixed;
+    top: 0; 
+    width: 100%; 
+  }
+  
+ 
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+ 
+  .navbar a:hover {
+    background: #ddd;
+    color: black;
+  }
+  
+
+  .main {
+    margin-top: 30px; 
+  }
+
+
+  
+  #Opus-hero-image {
+    display: flex;
+    justify-content: center;
+    
+    background-blend-mode: multiply;
+    opacity: 1;
+    height: auto;
+    padding: auto;
+  }
+  
+  #header img {
+    height: 5rem;
+    width: auto;
+  }
+  
+  #collection {
+    margin: 2rem;
+   
+  }
+
+  /* img{
+    max-width:450px;
+    max-height:400px;
+  } */
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card {
+    justify-self: center;
+    text-align: center;
+    /* border: grey solid 1px; */
+    background: #edebeb;
+    padding: 2rem;
+    width: 35rem;
+    height: auto;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px #f4f3f3
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+
+
+  
+  button {
+    position: relative;
+    background-color: #e04b52;
+    border: none;
+    border-radius: 5px;
+    height: 3rem;
+    width: max-content;
+    color: whitesmoke;
+    font-size: 18px;
+    justify-self: center;
+  }
+  
+  button:hover {
+    background-color: whitesmoke;
+    border: #e04b52 solid 1px;
+    color: #e04b52;
+  }
+  
+  .container {
+    padding: 1rem;
+    width: stretch;
+    height: auto;
+    display: none;
+    background: #515DA2;
+    opacity: .8;
+  }
+  
+  
+  
+  .submit {
+    position: relative;
+    background-color: #e04b52;
+    border-radius: 5px;
+    height: 2rem;
+    width: max-content;
+    color: whitesmoke;
+    font-size: 18px;
+    justify-self: center;
+    font-family: monospace;
+    margin: 3px;
+  }
+  
+  .submit:hover {
+    background-color: whitesmoke;
+    border: #e04b52 solid 1px;
+    color: #e04b52;
+  }
+  
+  
+  .input-text {
+    border-radius: 5px;
+    height: 2rem;
+    width: 60%;
+    font-size: 18px;
+    font-family: monospace;
+    margin: 3px;
+  }

@@ -44,31 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    // const form = document.querySelector('form')
-    // form.addEventListener('submit', CommentFormData)
+    function postComment(e){
+        // console.log(e.target.dataset.pictureId) grabs the picture id
+        fetch(COMMENTS_URL,{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                picture_id: e.target.dataset.pictureId
+            })
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
 
-    // function CommentFormData(e){
-    //     e.preventDefault()
-    //     const comment = document.querySelector('input[name="comment"]').value
-    //     console.log(comment)
 
-    //     const newComment = {
-    //         comment: comment
-    //     }
-    //     addComment(newComment)
-
-
-    
-    // }
-    // function addComment (comment){
-    //     fetch(COMMENTS_URL, {
-    //         method: 'POST', 
-    //         headers: {"content-type": "application/json"},
-    //         body: JSON.stringify(comment)
-    //     })
-    //     .then(res =>)
-    // }
-    
     
     function displayAllPicture(picture) {
     
@@ -86,9 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let commentInput = document.createElement('input')
         // let commentSubmit = document.createElement('button')
         
-
-
-
         let main = document.querySelector('main')
         
 
@@ -100,7 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
         h3.textContent= `Date: ${picture.date}`
         p.textContent = `${picture.description}`
         h4.textContent = 'What others are thinking'
+
         btn.textContent = 'Add a Comment'
+        btn.setAttribute('data-picture-id', picture.id)
+        btn.addEventListener('click', postComment)
 
         // commentForm.form.setAttribute("method", "post"); 
         // commentForm.setAttribute("action", "submit");

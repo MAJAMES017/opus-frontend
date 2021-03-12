@@ -57,8 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(res => res.json())
     .then(comment => {
-        let cards = document.querySelector('.card') 
-        let ul = cards.querySelector('ul')
+        
+        // let cards = document.querySelector(".card") 
+        let card = e.target.parentElement
+        let ul = card.querySelector('ul')
         buildCommentLi(comment,ul)
     })
 }

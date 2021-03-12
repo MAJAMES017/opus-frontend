@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
         .then(res => res.json())
-        // .then(console.log) shows created comment in the console
-        .then( () => {
-            let card = document.querySelector(`[data-id='${e.target.dataset.pictureId}']`)
-            buildCommentLi()
-        })
-    }
+    .then(comment => {
+        let cards = document.querySelector('.card') 
+        let ul = cards.querySelector('ul')
+        buildCommentLi(comment,ul)
+    })
+}
 
 
     
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let main = document.querySelector('main')
         
 
-        div.className = 'picture card'
+        div.className = 'card'
         div.id = picture.id
         h1.textContent=`${picture.title}`
         img.src=picture.image_url

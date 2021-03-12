@@ -1,16 +1,25 @@
-const BASE_URL = 'http://localhost:3000'
-const PICTURES_URL = 'http://localhost:3000/pictures'
-const USERS_URL = 'http://localhost:3000/users'
-const COMMENTS_URL = 'http://localhost:3000/comments'
+const BASE_URL = 'http://localhost:3000';
+const PICTURES_URL = 'http://localhost:3000/pictures';
+const USERS_URL = 'http://localhost:3000/users';
+const COMMENTS_URL = 'http://localhost:3000/comments';
+
+let currentUser = {id: 1, name: "bill"}
+// let selectedPic = {}
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
     let main = document.querySelector('main')
-
+   
     // function fontFamily() {
     //     document.querySelector('main').style.fontFamily = "Verdana, sans-serif";
     //   }
+
+    function getUser(id){
+        return fetch(`${USERS_URL}/${id}`)
+            .then(res => res.json())
+    }
+
 
 
     function getAllPictures(){
@@ -22,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
     }
+    
 
     function hideComment(comment){
         fetch(`${COMMENTS_URL}/${comment.id}`,{
@@ -33,6 +43,32 @@ document.addEventListener('DOMContentLoaded', () => {
             commentLi.parentElement.remove()
         })
     }
+
+    // const form = document.querySelector('form')
+    // form.addEventListener('submit', CommentFormData)
+
+    // function CommentFormData(e){
+    //     e.preventDefault()
+    //     const comment = document.querySelector('input[name="comment"]').value
+    //     console.log(comment)
+
+    //     const newComment = {
+    //         comment: comment
+    //     }
+    //     addComment(newComment)
+
+
+    
+    // }
+    // function addComment (comment){
+    //     fetch(COMMENTS_URL, {
+    //         method: 'POST', 
+    //         headers: {"content-type": "application/json"},
+    //         body: JSON.stringify(comment)
+    //     })
+    //     .then(res =>)
+    // }
+    
     
     function displayAllPicture(picture) {
     
@@ -46,7 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
         let btn = document.createElement('button')
         let ul = document.createElement('ul')
+        // let commentForm = document.createElement('form')
+        let commentInput = document.createElement('input')
+        // let commentSubmit = document.createElement('button')
+        
+
+
+
         let main = document.querySelector('main')
+        
 
         div.className = 'picture card'
         div.id = picture.id
@@ -57,16 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
         p.textContent = `${picture.description}`
         h4.textContent = 'What others are thinking'
         btn.textContent = 'Add a Comment'
-    
 
+        // commentForm.form.setAttribute("method", "post"); 
+        // commentForm.setAttribute("action", "submit");
+        // style.display.hidden = true
+        // btn.addEventListener('click', () => {
+        //     selectedPic = picture.id
+        //     console.log(selectedPic)
+        // })
+        
+    
         picture.comments.forEach(comment => buildCommentLi(comment, ul))
 
-
-        div.append(h1, img, h2, h3, p, h4, ul)
+        // adding all the elements to the picture cards
+        div.append(h1, img, h2, h3, p, h4, ul, commentInput, btn,  )
         main.appendChild(div)
     
    
     }
+    
+        
+
 
     function buildCommentLi(comment, ul){
         let li = document.createElement('li')
@@ -82,5 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ul.appendChild(li)
 
     }
+
+   
+
+
+
     getAllPictures()
 });

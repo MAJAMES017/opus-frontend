@@ -56,7 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
         .then(res => res.json())
-        .then(console.log)
+        // .then(console.log) shows created comment in the console
+        .then( () => {
+            let card = document.querySelector(`[data-id='${e.target.dataset.pictureId}']`)
+            buildCommentLi()
+        })
     }
 
 
